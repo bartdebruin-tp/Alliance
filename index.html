@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1e2622">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Alliance">
+  <title>Alliance Map</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>Alliance</h1>
+    <div class="tools">
+      <button id="undoBtn" class="icon-btn" type="button" aria-label="Undo last move" title="Undo">&#8630;</button>
+      <button id="zoomOut" class="icon-btn" type="button" aria-label="Zoom out" title="Zoom out">&minus;</button>
+      <button id="zoomIn" class="icon-btn" type="button" aria-label="Zoom in" title="Zoom in">+</button>
+      <button id="menuBtn" class="icon-btn" type="button" aria-label="Game menu" title="Menu">&#8943;</button>
+    </div>
+  </header>
+
+  <main id="mapWrap" class="map-wrap">
+    <div id="board" class="board"></div>
+  </main>
+
+  <footer class="players">
+    <div class="status">
+      <span id="statusText"></span>
+      <span id="selActions" class="actions" hidden>
+        <button id="editBtn" class="btn small" type="button">Edit</button>
+        <button id="offBtn" class="btn small" type="button">Off map</button>
+      </span>
+    </div>
+    <div id="playerList" class="player-list"></div>
+  </footer>
+
+  <dialog id="playerDialog">
+    <form id="playerForm" method="dialog">
+      <h2 id="dlgTitle">Add player</h2>
+      <div class="photo-row">
+        <div id="photoPreview" class="token big"></div>
+        <div class="photo-buttons">
+          <label class="btn">Choose photo
+            <input id="photoInput" class="sr-only" type="file" accept="image/*">
+          </label>
+          <button id="removePhoto" class="btn ghost" type="button">Remove photo</button>
+        </div>
+      </div>
+      <label class="field">Name
+        <input id="nameInput" maxlength="20" autocomplete="off" required>
+      </label>
+      <div class="field">Colour
+        <div id="colorPicker" class="colors" role="group" aria-label="Colour"></div>
+      </div>
+      <div class="dlg-actions">
+        <button id="deletePlayer" class="btn danger" type="button">Delete</button>
+        <span class="spacer"></span>
+        <button id="cancelDlg" class="btn" type="button">Cancel</button>
+        <button class="btn primary" type="submit">Save</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="menuDialog">
+    <h2>Game</h2>
+    <div class="menu-list">
+      <button id="clearMap" class="btn" type="button">Clear the map (keep players)</button>
+      <button id="newGame" class="btn danger" type="button">New game (delete all players)</button>
+      <button id="closeMenu" class="btn" type="button">Close</button>
+    </div>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
